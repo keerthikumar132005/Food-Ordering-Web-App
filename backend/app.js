@@ -20,6 +20,16 @@ app.get("/meals", async (req, res) => {
   res.json(JSON.parse(meals));
 });
 
+app.get("/orders", async (req, res) => {
+  fs.readFile("./data/orders.json", "utf8")
+    .then((orders) => {
+      res.json(JSON.parse(orders));
+    })
+    .catch(() => {
+      res.status(500).json({ error: "Could not read orders.json file" });
+    });
+});
+
 app.post("/orders", async (req, res) => {
   const orderData = req.body.order;
   if (
