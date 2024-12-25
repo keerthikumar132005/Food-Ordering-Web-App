@@ -25,7 +25,10 @@ export default function Checkout() {
     error,
     sendRequest,
     clearData,
-  } = useHttp("http://localhost:3000/orders", requestConfig);
+  } = useHttp(
+    "https://food-ordering-web-app-eexb.onrender.com/orders",
+    requestConfig
+  );
 
   const totalAmount = cartCtx.items.reduce((acc, item) => {
     return acc + item.quantity * item.price;
